@@ -46,21 +46,23 @@ class FamilyStructure:
     def _generateId(self):
         return randint(0, 99999999)
 
-    def add_member(self, member):
+    def add_member(self, member): 
         if member["id"] is None :
             member["id"] = self._generateId()
-            self.members.append(member)
-            return self.members
+        member["last_name"] = self.last_name
+        self._members.append(member)
+        return self._members
         pass
 
     def delete_member(self, id):
-        self.members = list(filter(lambda item: id!=item["id"], self._members))
+        self._members = list(filter(lambda item: id!=item["id"], self._members))
         return None
         pass
 
+
     def get_member(self, id):
-        for member in self_members:
-            if id==member ["id"]:
+        for member in self._members:
+            if id==member["id"]:
                 return member
         pass
 
